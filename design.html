@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
-		<title>Simple Integrated Land Use Orchestrator</title>
+		<title>SILO Design</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="description" content="This site was created from a template originally designed and developed by Codify Design Studio. Find more free templates at http://www.adobe.com/devnet/author_bios/chris_converse.html" />
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
@@ -52,17 +52,17 @@
 		<div class="contentArea">
 			<div class="container"> 
 				<div class="contentleft">
-					<h1>&nbsp;</h1>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
-					<h1>Simple Integrated Land Use Orchestrator</h1>
-					<p>SILO is a simple yet powerful land-use model that is fully integrated with a travel demand model. This allow representing the full land-use/transportation feedback cycle. </p>
-					<p>SILO is a microscopic model, enabling the ingegration with both aggregate (or four-step) and disaggregate (or activity-based) travel demand models. SILO is written  in Java and open-source. </p>
-					<p>Initially developed as a research project by Parsons Brinckerhoff, Inc. for Minneapolis/St. Paul, SILO is currently implemented for the state of Maryland by the <a href="http://smartgrowth.umd.edu">National Center for Smart Growth</a> at the <a href="http://www.umd.edu">University of Maryland</a>.</p>
+					<h1>SILO Design</h1>
+					<p>SILO is a land-use model that is designed as a discrete choice microsimulation model. Discrete choice means that decisions (such as a decision of a household to move to a new dwelling) are modeled explicitly based on the value or utility at the current dwelling location and expected utilities at alternative dwelling locations. </p>
+					<p><img src="images/siloLineDiagram.png" alt="" width="200" height="144" align="right"/>Being a microsimulation model, every household and person is simulated individually. SILO models household relocation, non-spatial demographic changes (such as birth, aging, marriage or having children), developers' decisions to build new residential buildings and change of dwellings over time (including renovation, deterioration and demolition). It is calibrated to closely match observed land use changes from 2000 to 2010 (so-called backcasting), to reasonable model population changes in the future to the year 2040.<br />
+				    </p>
+					<p>SILO is built as a middle-weight tool. It is fully integrated with a travel demand model, and therefore, more complex than sketch-planning tools (such as CommunityViz or UPlan). On the other hand, it is built to function with less rigorous data collection and estimation requirements than traditional large-scale land-use models (such as PECAS or UrbanSim), making SILO simpler to implement.</p>
+					<p><img src="images/siloAgePyramid.png" alt="" width="150" height="111" align="left"/>SILO is an open-source software and was initially developed with funding by Parsons Brinckerhoff. The prototype application was implemented for the Metropolitan Area of Minneapolis/St. Paul, Minnesota. Currently, NCSG implements an improved version for the State of Maryland. SILO provides a GUI (Graphical User Interface) to facilitate model applications. A visualization tool allows easy analysis of model results.</p>
 				</div>
 				<div class="contentright">
-					<h2> Land-Use/Transportation Feedback Cycle</h2>
-					<p><img src="images/lutIntegration.jpg" width="100" height="100" alt="Land-use/transport integration"/ align="right">Integrated land-use/ transportation models allow  representing the land-use/ transportation feedback cycle, in which locations of households and jobs are used as trip ends to generate travel, and accessibilities of the travel demand model are used to influence relocation decisions. </p>
+					<h2> SILO Visualizations</h2>
+					<p><img src="images/siloMapVisualization.png" width="190" height="158" alt=""/></p>
+					<p>A visualizer is part of the SILO package to quickly analyze model results. </p>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
