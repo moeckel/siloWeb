@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
-		<title>SILO Overview</title>
+		<title>SILO Data</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="description" content="This site was created from a template originally designed and developed by Codify Design Studio. Find more free templates at http://www.adobe.com/devnet/author_bios/chris_converse.html" />
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
@@ -52,16 +52,9 @@
 		<div class="contentArea">
 			<div class="container"> 
 				<div class="contentleft">
-					<h1>Overview</h1>
-					<p>SILO is a state-of-the-art land-use model that is designed as a discrete choice microsimulation model. Discrete choice means that decisions (such as a decision of a household to move to a new dwelling) are modeled explicitly based on utilities at the current dwelling location and expected utilities at alternative dwelling locations. In such a microsimulation model, every household and person is simulated individually. SILO models household relocation, non-spatial demographic changes (such as birth, aging, marriage or having children), developers' decisions to build new residential buildings and change of dwellings over time (including renovation, deterioration and demolition). </p>
-					<p>SILO is built as a middle-weight tool. It is fully integrated with a travel demand model, and therefore, more complex than sketch-planning tools (such as CommunityViz or UPlan). On the other hand, it is built to function with less rigorous data collection and estimation requirements, making SILO simpler to implement than other popular large-scale land-use models (such as PECAS or UrbanSim). </p>
-					<p>An important innovation of SILO is to explicitly represent constraints in location choice. The map on the left below shows with a turquoise dot a work location in North Bethesda, MD. A household travel survey reports the average commute distance. Using the trip length frequency distribution of the survey, areas were color-coded to show the probability of this person to live. </p>
-					<p><img src="images/commute652.png" width="210" height="260" alt="Commuter shed from North Bethesda"/>&nbsp;<img src="images/commute570.png" width="210" height="260" alt="Commuter shed from Columbia"/>&nbsp;<img src="images/commuteCombined.png" width="210" height="260" alt="Combined commuter shed for a household with one person working in North Bethesda and one person working in Columbia"/></p>
-				  <p>The map in the center shows the same home location probability for a person working in Columbia, MD. If these two persons live in the same household, their joint area within a reasonable distance to 
-					the two work locations is shown in the map on the right. SILO explicitly represents this constraint when searching for a new housing location. Further constraints explicitly represented in SILO are housing costs and total transportation costs of a given location.</p>
-					<p>SILO is an open-source software and was initially developed with funding by <a href="http://www.pbworld.com">Parsons Brinckerhoff</a>. The prototype application was implemented for the Metropolitan Area of Minneapolis/St. Paul, Minnesota. Currently, an updated version is implemented by the <a href="http://www.smartgrowth.umd.edu">Smart Growth Center</a> for the State of Maryland, funded by the Maryland Department of Transportation.</p>
-					
-				</div>
+					<h1>SILO Data</h1>
+					<p>SILO has been designed to work with minimal data requirements. In contrast to other large-scale land-use models, SILO only relies on data that are publicly available (at least that is true in the U.S.). The most important local input data are PUMS files that can be downloaded from the <a href="http://www2.census.gov/census_2000/datasets/PUMS/FivePercent/">Census Bureau</a> website. </p>
+					<p>Required local data include zonal population and employment. Information on local land use is desirable but may be substituted by publicly available land-cover data that can be downloaded from the <a href="http://www.mrlc.gov">USGS</a> website. </p></div>
 				<div class="contentright">
 					<h2> SILO Flowchart</h2>
 					<p><img src="images/siloFlowChart.gif" width="203" height="286" alt=""/></p>
