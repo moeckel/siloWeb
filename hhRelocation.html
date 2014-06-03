@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Household Relocation</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="This site was created from a template originally designed and developed by Codify Design Studio. Find more free templates at http://www.adobe.com/devnet/author_bios/chris_converse.html" />
+		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+		<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+		<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+	
+		<div class="bannerArea">
+			<div class="container">
+				<div class="bannernav"><a href="contact.html" >Contact</a></div>
+				<div class="toplogo">
+                <a href="index.html"><img src="images/siloLogoTown.gif" alt="Silo Logo" height="69"/></a>
+                </div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div class="topnavigationArea">
+			<div class="container"> 
+				<div class="topnavigationgroup">
+					<ul id="MenuBar1" class="MenuBarHorizontal">
+                      <li><a href="design.html" class="MenuBarItemSubmenu">Model Design</a>
+                        <ul>
+                          <li><a href="overview.html">Overview</a></li>
+                          <li><a href="publications.html">Publications</a></li>
+                        </ul>
+                      </li>
+                      <li><a class="MenuBarItemSubmenu" href="modules.html">Modules</a>
+                        <ul>
+							<li><a href="synPop.html">Synthetic Population</a></li>
+                          <li><a href="underConstruction.html">Household Relocation</a></li>
+                          <li><a href="demography.html">Demography</a></li>
+                          <li><a href="underConstruction.html">Real Estate</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="data.html" class="MenuBarItemSubmenu">Data</a>
+                        <ul>
+                          <li><a href="underConstruction.html">Input Data</a></li>
+                          <li><a href="underConstruction.html">Output Data</a></li>
+                        </ul>
+                      </li>
+<li style="border-right-style: solid;"><a href="team.html">Team</a></li>
+					</ul>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div class="contentArea">
+			<div class="container"> 
+				<div class="contentleft">
+				  <h1>Household Relocation</h1>
+					
+			      <p>The household relocation module applies logit models to select if and where a household might move. Logit models were developed by T.A. Domencich and D. McFadden (Urban Travel Demand. A behavioural analysis, North-Holland Publishing: 1975) and are particularly strong at modeling urban behavior. </p>
+			      <p>Each household evaluates every simulation period whether it moves or not. Three logit models are applied to simulate a household move:</p>
+			      <ol>
+                  <li><a href="#moveOrDontMove">Decision to move or to stay</a>. The majority of households will decide not to move and leave this relocation module after this decision. Only if the household decides to relocate, steps 2 and 3 are completed.</li>
+                  <li><a href="#chooseRegion">Select a region to move</a></li>
+                  <li><a href="#chooseDwelling">Select a dwelling within the chosen region</a></li></ol>
+                  <p>Every decision is based on utilities that describe how attractive a certain alternative is for a household. Different weights are used for every household type to calculate these utilities.</p>
+                  <h2><a name="moveOrDontMove"></a>Decision to move or to stay</h2>
+                  <p>A binomial logit model is used to make this choice. The logit model is called binomial because only two choice are available, to move or to stay. To make this decision, the household compares the satisfaction with its current housing location with the potential satisfaction at alternative (currently vacant) housing locations. If the household has the prospect to improve substantially, it is likely that it will decide to look for an alternative dwelling.</p>
+                  <h2><a name="chooseRegion"></a>Select a region to move</h2>
+                  <p><img src="images/mspRegions.gif" alt="Regions in Minnepolis/St. Paul" width="173" height="178" align="right"/>Logit models are built to simulate the selection between a limited number of alternatives. Choosing between all vacant dwellings in the study would violate this condition. Therefore, a two-step selection was designed for SILO. In this first step, a region is chosen. For SILO's application in Minneapolist/St.Paul, the seven counties were selected as regions. </p>
+                  <p><img src="images/mstmRegions.jpg" alt="Regions in Maryland" width="250" height="193" align="left"/>In SILO's application for Maryland, 31 regions were defined that are an aggregate of counties. Urban counties form regions by themselves, while rural counties were aggregated into larger regions. </p>
+                  <h2><a name="chooseDwelling"></a>Select a dwelling within the chosen region</h2>
+                  <p>Within the chosen region, all vacant dwellings are available to be chosen. The utilities to chose a dwelling are calculated differently for every household type.</p>
+              </div>
+				<div class="contentright">
+					<h2>Household relocation</h2>
+					<p><img src="images/movingTruck.jpg" alt="Moving truck" width="150" height="181" align="center"/></p>
+					<p>Household relocation is simulated with a series of logit models. </p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div class="footerArea">
+			<div class="container"> 
+				<div class="copyright">&copy; 2014 National Center for Smart Growth, University of Maryland.</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		<!--
+		var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+		//-->
+		</script>
+	</body>
+</html>
