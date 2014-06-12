@@ -64,8 +64,10 @@
                   <li><a href="#income">change of income</a></li>
                   <li><a href="#death">death</a></li>
                   <p>These events are simulated in random order (and household relocation and dwelling events are mixed into this random order of events). All demographic events are modeled using Markov models that apply transition probabilities to select whether events happen or not. </p>
+                  <p>&nbsp;</p>
 					<h2><a name="aging"></a>Aging</h2>
-					<p>Aging is the simplest event modeled. Every simulation period, all persons age by the length of the simulation period, which usually is one year.</p>
+					<p>Aging is the simplest event modeled. Every simulation period, all persons age by the length of the simulation period, which usually is one year. </p>
+					<p>&nbsp;</p>
 					<h2><a name="birth"></a>Birth of a child</h2>
 					<p><img src="images/birthProbability.jpg" alt="" width="248" height="169" align="right"/>The model checks for every woman if she is going to have a baby this simulation period. The probability for having a child is driven by two variables: </p>
                     <ol>
@@ -73,11 +75,18 @@
 					<li>whether this woman is married or cohabitates with a man. </li>
                     </ol>
 				  <p>The birth rates were derived from the U.S. Department of Health and Human Services: <em>National Vital Statistics Reports</em>, Vol. 51, No. 12, August 4, 2003. The differenciation between married/cohabitating and single women was derived heuristically.</p>
+				  <p>&nbsp;</p>
 					
 					    <h2><a name="leave"></a>Leave parental household</h2>
 			      <p><img src="images/lphProbability.jpg" alt="" width="248" height="168" align="right"/>Children aged 15 or older can leave the parental household. Data for the U.S. were not readily available, Canadian statistics were used instead (<a href="http://www.statcan.gc.ca/pub/11-008-x/2006002/t/4169183-eng.htm">Statistics Canada</a>). The bar chart on the right shows that probabilities to leave the parental household distinguish men and women, as women tend to leave their parent's household slightly earlier than men do. Canadian statistics only provided probabilities from children aged 15 to 35. Probabilities for children aged 35 to 49 were derived heuristically.</p>
+			      <p>&nbsp;</p>
 					  
                         <h2><a name="merry"></a>Get married/cohabitate</h2>
+                  <p><img src="images/marriageProbability.jpg" alt="" width="249" height="160" align="right"/>The probability to get married (shown in the figure on the right) is dependend on age and gender of a person. The model divides these probabilities by 2, as one marriage always affects the marriage status of two people. The model uses the observed probability to get married as the probability to either marry or cohabitate, which is likely to slightly underestimate the marriage/cohabitation rate. On the other hand, the model does not simulate a couple that is cohabitating already and decides to get married, as this would not induce a spatial move, and therefore, is irrelevant for the model. </p>
+                  <p>Currently, the model only considers marriages/cohabitation between two people of the opposite gender. It is planned to expand the model to allow same-sex marriage/cohabitation. </p>
+                  <p>At the beginning of every simulation period, the model checks for every person if this person is available for getting married. Only persons aged 15 to 79 who are currently unmarried are considered for getting married. To speed up the model, 20% of those available for getting married are added to a &quot;wedding market,&quot; which ensures to provide a large enough number of potential wedding partners while keeping the wedding market rather small and efficient. </p>
+                  <p><img src="images/marriageAgeDiff.jpg" alt="" width="250" height="172" align="right"/>During the simulation, an unmarried person with the right age may decide to get married. This person will select a person of the opposite gender from the wedding market. 
+                  Currently, only age is used as  &quot;utility&quot; to choose a partner. It is planned to add income as another variable to find two partners who are likely to marry each other or cohabitate. Marriage statistics suggest that the average age difference between bright and groom is 2.3 years, with the man commonly being the older partner. A normal age distribution as shown on the right is assumed when selecting a partner. A 26-year old woman looking for a male partner will mostly likely select a man aged 28. It is possible that this woman selects a man ten years older than herself, though this is rather unlikely. </p>
                   <p>&nbsp;</p>
                       
                         <h2><a name="divorce"></a>Get divorced/separate</h2>
