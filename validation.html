@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
-		<title>Output Data</title>
+		<title>Model Validation</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="description" content="This site was created from a template originally designed and developed by Codify Design Studio. Find more free templates at http://www.adobe.com/devnet/author_bios/chris_converse.html" />
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
@@ -56,19 +56,12 @@
 		<div class="contentArea">
 			<div class="container"> 
 				<div class="contentleft">
-					<h1>Output Data</h1>
-					<p>After a SILO run has been completed, three sets of output data are available:</p>
-					<ol>
-					  <li><a href="#synPop">Updated synthetic population</a></li>
-					  <li><a href="#aggregate">Aggregate summary file</a></li>
-					  <li><a href="#detailed">Spatially detailed summary file</a></li>
-				    </ol>
-					<h2><a name="synPop"></a>Updated synthetic population</h2>
-					<p>The <a href="synPop.html">synthetic population</a> that was created for the base year is updated every simulation period (commonly a simulation period is one year). After the model finished the final simulation period, an updated synthetic population is written out for that year. </p>
-					<h2><a name="aggregate"></a>Aggregate summary file</h2>
-				  <p>The aggregate output file contains detailed information for the entire study area for every modeled year. Summaries include population by age and gender, housholds by household type, income and size, number of dwellings by dwelling type, average vacancy rates, etc. This file is written in csv format for easy reading in Excel or with a text editor.</p>
-					<h2><a name="detailed"></a>Spatially detailed summary file</h2>
-					<p>The spatially detailed output file contains selected information by zone for every modeled year. Data include population, number of dwellings, available land for development, average housing price, and others. </p>
+					<h1>Model validation</h1>
+					<p>
+                    To increase confidence in SILO scenario analyses, model results need to be validated. While travel demand models can simply be validated by comparing model volumes with observed volumes, no comparable observed data exist for land use model validation. A comparable data set would have information on how many households moved from town A to town B in a given year. As such data are unavailable, land use models can only be validated by comparing trends over several years. For this very reason, SILO’s base year is not the current year, but 2000. This so-called “back-casting” allows modeling changes from 2000 to today, and the model’s distribution of population is compared to the observed distribution. Such comparisons are commonly done at the county level to balance out data inconsistencies at the zonal level.</p>
+					<p><img src="images/validationMSP.jpg" alt="Validation of SILO model results for 2010 in Minneapolis/St. Paul." width="442" height="325" align="left"/>This graphic shows the SILO validation of model results in 2010 for the application in Minneapolis/St. Paul. Every dot represents total population in one county. The Validation shows that most counties are matched rather closely, though population in Hennepin County (turquoise dot) was modeled to grow faster than it actually did between 2000 and 2010. This mismatch is probably due to the fact that information on available land for construction was limited, and it was assumed that all agricultural land would be available for development. Given its proximity ot the Central Business District of this urban agglomeration, a lot of development pressure can be observed in Hennepin County. </p> 
+
+<p>In addition, land use models are validated by conducting reasonability checks on model sensitivities. For example, a new highway interchange might be implemented in the model and the change in population due to this additional interchange is analyzed for reasonability. Strictly speaking, this is not a true validation as no observed data exists for his case study. However, such sensitivity tests helps gaining confidence in the overall model performance.</p>
 				</div>
 				<div class="contentright">
 					<h2> SILO Flowchart</h2>
