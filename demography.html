@@ -68,6 +68,7 @@
                   <li><a href="#income">change of income</a></li>
                   <li><a href="#death">death</a></li>
                   <p>These events are simulated in random order (and household relocation and dwelling events are mixed into this random order of events). All demographic events are modeled using Markov models that apply transition probabilities to select whether events happen or not. </p>
+                  <p>All probabilties are currently hold constant over time. It is planned to improve SILO by adjusting birth rates and life expectancy for future years.</p>
                   <p>&nbsp;</p>
 					<h2><a name="aging"></a>Aging</h2>
 					<p><img src="images/candle.gif" alt="" width="14" height="40" align="right"/>Aging is the simplest event modeled. Every simulation period, all persons age by the length of the simulation period, which usually is one year. </p>
@@ -110,7 +111,7 @@
                       
                         <h2><a name="death"></a>Death</h2>
                       
-                    <p>&nbsp;</p>
+                    <p>Death is modeled by applying survival rates by age and gender. Survival rates where obtained from the World Health Organization (<a href="http://www.who.int/gho/database/en/">WHO</a>) for the United States in 2000, which is the common base year for SILO. Survival rates become smaller as people age, and are slighly higher for women than for men.</p>
 					<p>&nbsp;</p>
                     <!--
 					<table border="0" cellpadding="2" cellspacing="0">
