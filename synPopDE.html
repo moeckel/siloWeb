@@ -62,11 +62,24 @@
 				<div class="contentleft">
 					<h1>Creating a Synthetic Population with German Data</h1>
 					
-				  <p>
-                    A synthetic population generator for the Metropolitan Area of Munich is currently under development. Using census microdata, municipality-level and county-(called Kreis)-level data, a process called Iterative Proportional Updating is used to generate a synthetic population. A detailed description of the approach is currently under development. 
-                    </p>
-				  <h2>Generation procedure</h2>
-				  <p>The synthetic population is generated using Iterative Proportional Updating (IPU). This procedure was developed by Ye et al. (2009) and it was expanded to accomodate controls at Multiple Geographic Resolutions by Konduri et al. (2016). </p>
+				  <p> A synthetic population generator for the Metropolitan Area of Munich is currently under development. Using census microdata, municipality-level and county-(called Kreis)-level data, a process called Iterative Proportional Updating is used to generate a synthetic population. A detailed description of the approach is currently under development. 
+                  </p>
+                  <p>The objective of population synthesis is to generate a population that matches certain attributes of the actual population based on a sample of households. Attributes can be at the household level, such as household size or number of autos, or at the person level, such as age, gender or employment status. The optimization procedure consists on obtaining how representative is each one of the households inside the population, given a set of constraints. </p>
+<p>Population synthesis has three phases: </p>
+                  <ol>
+                    <li>Data preparation</li>
+                    <li>Optimization procedure</li>
+                    <li>Generation of the synthetic population</li>
+                  </ol>
+				  <p>&nbsp;</p>
+				  <h2>Data</h2>
+                  <p>German statistical information is available online at the GENESIS-Online database. Data are aggregated at the municipality level (Gemeinden), county level (Landkreise), state level (Länder) or Nationwide (Bund). They include information on population, educacion, housing and environment, economic sectors, public finances or economic accounts. </p>
+                  <p>Census microdata can be purchased from the State Statistical Office. </p>
+                  <p>&nbsp;</p>
+                  <h2>Optimization procedure</h2>
+                  <p>The synthetic population is generated using Iterative Proportional Updating (IPU). This procedure was developed by Ye et al. (2009) and it was expanded to accomodate controls at multiple geographic resolutions by Konduri et al. (2016).  </p>
+				  <p>The IPU procedure calculates a set of weights of each one of the microdata records in an iterative approach. It is capable of closely matching household-level and person-level marginal distributions at the same time; and it can accommodate controls for attributes defined at municipality-level or county-level simultaneously. This feature is specially important for our case study, as households by size are only available at the county-level. </p>
+                  
 				</div>
 				<div class="contentright">
 					<h2>Example</h2>
