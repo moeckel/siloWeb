@@ -89,7 +89,7 @@
 					<p>PUMS data include an expansion factor that describes how many households of the actual population this record represents. For SILO's synthetic population, this expansion factor is used to create a complete synthetic population. For example, if a PUMS record has an expansion factor of 5, this record is added to SILO's synthetic popoulation and duplicated four more times. As expansion factors were calculated accordingly, the total population of the SILO's synthetic population matches the actual population in the study area. </p>
 					<p>PUMS datasets also provide information on persons of each household and the dwellings the households live in. By expanding the household records, synthetic persons and synthetic dwellings are created at the same time. Persons match the number of persons of the actual population. Dwellings, however, underrepresent the actual dwellings found in reality. This is because households were interviewed to create PUMS data. A vacant dwelling is not captured by the PUMS data. </p>
 					<p>&nbsp;</p>
-					<h2>Vacant dwellings</h2>
+					<h2>Vacant Dwellings</h2>
 					<p>To create a complete set of dwellings (occupied dwellings and vacant dwellings), an average vacancy rate is assumed exogenously. Vacant dwellings are added by randomly selecting existing dwellings from PUMS data and adding them without a resident. Vacant dwellings are added until the exogenously assumed vacancy rate is matched. As default values, SILO assumes the following vacancy rates. These values can be changed in the properties file file under the token &#8249;vacancy.rate.by.type&#8250;.</p>
 					<table border="0" cellspacing="0" cellpadding="3">
 					  <tr>
