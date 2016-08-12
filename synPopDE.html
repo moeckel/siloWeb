@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
-		<title>Model Validation</title>
+		<title>Synthetic Population using German Data</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="description" content="This site was created from a template originally designed and developed by Codify Design Studio. Find more free templates at http://www.adobe.com/devnet/author_bios/chris_converse.html" />
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
@@ -60,17 +60,17 @@
 		<div class="contentArea">
 			<div class="container"> 
 				<div class="contentleft">
-					<h1>Model validation</h1>
+					<h1>Creating a Synthetic Population with German Data</h1>
+					
 					<p>
-                    To increase confidence in SILO scenario analyses, model results need to be validated. While travel demand models can simply be validated by comparing model volumes with observed volumes, no comparable observed data exist for land use model validation. A comparable data set would have information on how many households moved from town A to town B in a given year. As such data are unavailable, land use models can only be validated by comparing trends over several years. For this very reason, SILO’s base year is not the current year, but 2000. This so-called “back-casting” allows modeling changes from 2000 to today, and the model’s distribution of population is compared to the observed distribution. Such comparisons are commonly done at the county level to balance out data inconsistencies at the zonal level.</p>
-					<p><img src="images/validationMSP.jpg" alt="Validation of SILO model results for 2010 in Minneapolis/St. Paul." width="442" height="325" align="left"/>This graphic shows the SILO validation of model results in 2010 for the application in Minneapolis/St. Paul. Every dot represents total population in one county. The Validation shows that most counties are matched rather closely, though population in Hennepin County (turquoise dot) was modeled to grow faster than it actually did between 2000 and 2010. This mismatch is probably due to the fact that information on available land for construction was limited, and it was assumed that all agricultural land would be available for development. Given its proximity ot the Central Business District of this urban agglomeration, a lot of development pressure can be observed in Hennepin County. </p> 
-
-<p>In addition, land use models are validated by conducting reasonability checks on model sensitivities. For example, a new highway interchange might be implemented in the model and the change in population due to this additional interchange is analyzed for reasonability. Strictly speaking, this is not a true validation as no observed data exists for his case study. However, such sensitivity tests helps gaining confidence in the overall model performance.</p>
+                    A synthetic population generator for the Metropolitan Area of Munich is currently under development. Using census microdata, municipality-level and county-(called Kreis)-level data, a process called Iterative Proportional Updating is used to generate a synthetic population. A detailed description of the approach is currently under development. 
+                    </p>
+					
 				</div>
 				<div class="contentright">
-					<h2> SILO Flowchart</h2>
-					<p><img src="images/siloFlowChart.gif" width="203" height="286" alt=""/></p>
-					<p>SILO is designed to be closely integrated with a travel demand model. </p>
+					<h2>Example</h2>
+					<p><img src="images/syntheticPopulation.png" alt="Example of a list with synthetic households" width="150" height="91" align="center"/></p>
+					<p>A synthetic population represents line by line every household individually.</p>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
