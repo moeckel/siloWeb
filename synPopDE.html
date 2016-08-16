@@ -62,9 +62,12 @@
 				<div class="contentleft">
 					<h1>Creating a Synthetic Population with German Data</h1>
 					
-				  <p> A synthetic population generator for the Metropolitan Area of Munich is currently under development. Using census microdata, municipality-level and county-(called Kreis)-level data, a process called Iterative Proportional Updating is used to generate a synthetic population. A detailed description of the approach is currently under development. 
+				  <p> <i> A synthetic population generator for the Metropolitan Area of Munich is currently under development. Using census microdata, municipality-level and county-(called Kreis)-level data, a process called Iterative Proportional Updating is used to generate a synthetic population. A detailed description of the approach is currently under development. </i>
                   </p>
-                  <p>The objective of population synthesis is to generate a population that matches certain attributes of the actual population based on a sample of households. Attributes can be at the household level, such as household size or number of autos, or at the person level, such as age, gender or employment status. The optimization procedure consists on obtaining how representative is each one of the households inside the population, given a set of constraints. </p>
+                  <p>Synthetic populations are used in transportation modeling  when individual records are not available due to privacy data, lack of resolution or some attributes. Travel behavior of synthesized individuals is  simulated to evaluate, for example, the effect of building a new shopping mall on the transport network.</p>
+                  <p>The objective of population synthesis is to generate a population that matches certain attributes of the actual population based on a sample of households. Attributes can be at the household level, such as household size or number of autos, or at the person level, such as gender, age or employment status. The optimization procedure consists on obtaining how representative is each one of the households inside the population, given a set of attributes' constraints. </p>
+                  <img src="images/populationSynthesis.png" width="660" height="296" alt=""/>
+
 <p>Population synthesis has three phases: </p>
                   <ol>
                     <li>Data preparation</li>
@@ -72,19 +75,85 @@
                     <li>Generation of the synthetic population</li>
                   </ol>
 				  <p>&nbsp;</p>
-				  <h2>Data</h2>
-                  <p>German statistical information is available online at the GENESIS-Online database. Data are aggregated at the municipality level (Gemeinden), county level (Landkreise), state level (Länder) or Nationwide (Bund). They include information on population, educacion, housing and environment, economic sectors, public finances or economic accounts. </p>
-                  <p>Census microdata can be purchased from the State Statistical Office. </p>
-                  <p>&nbsp;</p>
+				  <h2>Data preparation</h2>
+                  
+                  <p>In Germany, statistical information of the population is available online at the GENESIS-Online database. Data are aggregated at the municipality level (Gemeinden), county level (Landkreise), state level (Länder) or Nationwide (Bund). They include information on population, educacion, housing and environment, economic sectors, public finances or economic accounts. </p>
+                  <p> For household structures, we can rely on microcensus from Household Travel Surveys or Household Census. In Germany, Household Census contains more detail than Household Travel Surveys on how households are structured. The number of records is a 5% sample of the total population, and due to privacy, they cannot be linked to the exact location of the household. The minimum resolution is statewide. Household Census microdata can be purchased from the State Statistical Office. They include household size, household composition or age, gender and employment status of household members.</p>
+                  <p> After data are collected, we decide which attributes are going to be matched, or control attributes. Control attributes can be household type or person type. Usual household type attributes are household size, number of autos the household owns, number of workers in the household or household income. Person type attributes refer to the individuals on the household and usually include age, gender, ethnicity or working status.  </p>
+                  
+                  
+                  <img src="images/syntheticPopulation_attributes.png" width="500" height="331" alt=""/>
+                  <p>
+                  Control attributes must be included on both databases and have transferable categories, which can limit the number of attributes to match. In some cases, total population attributes are not aggregated at the same resolution. Based on the available data, we use 24 control attributes at the municipality level and 5 control attributes at the county level. </p>
+                  <p> For the optimization procedure, we need to generate the frequency matrix. The frequency matrix shows the household type and the frequency of different person types within each household for the sample. The dimension of the matrix is N x M, where N is the number of households in the microrecords and M is the number of control attributes (household and person type). A 0 or 1 is assigned to household types control attributes and the persons in the household that has that attribute are assigned to person types control attributes.</p>
+                  
+                  <p>&nbsp;</p>                 
                   <h2>Optimization procedure</h2>
                   <p>The synthetic population is generated using Iterative Proportional Updating (IPU). This procedure was developed by Ye et al. (2009) and it was expanded to accomodate controls at multiple geographic resolutions by Konduri et al. (2016).  </p>
-				  <p>The IPU procedure calculates a set of weights of each one of the microdata records in an iterative approach. It is capable of closely matching household-level and person-level marginal distributions at the same time; and it can accommodate controls for attributes defined at municipality-level or county-level simultaneously. This feature is specially important for our case study, as households by size are only available at the county-level. </p>
-                  
-				</div>
+				  <p>The IPU procedure calculates a set of weights of each one of the microdata records in an iterative approach. It is capable of closely matching household-level and person-level marginal distributions at the same time; and it can accommodate control attributes defined at municipality-level or county-level simultaneously. This feature is specially important for our case study, as households by size are only available at the county-level. </p>
+                  <p>The IPU procedure is shown in Figure 1. It consists on adjusting the set of weights for each household of the microrecords to minimize the error between the control distribution and calculated distributions of each attribute, at each municipality. Therefore, the set of weights varies within municipalities. The process converges after a variable number of iterations, usually under 500. </p>
+                  <img src="images/syntheticPopulation_IPUprocedure.png" width="642" height="518" alt=""/>
+<p>Initial set of weights is equal to 1. On the next iterations, weights are updated as: </p>
+                  <img src="images/syntheticPopulation_weights.png" width="175" height="50" alt=""/>
+<p>Where: w<sub>i,j,m</sub> is the updated weight of household i at municipality m, w<sub>i,j-1,m</sub> is the previous weigth of household i at municipality m, c<sub>k,m</sub> is the contraint of the control attribute k at municipality m, f<sub>i,k,m</sub> is the frequency of the control attribute k on household i at municipality m. Weights are only updated on the households where the frequency of the control attribute is different than zero.</p>
+                <p>Weights are updated after considering each control attribute. All attributes, regardless they are household or person level, are treated equally. After all control attributes are considered, we calculate the relative difference in absolute value between the constraint and the calculated distributions, for each attribute. </p>
+                <img src="images/syntheticPopulation_errors.png" width="134" height="50" alt=""/>
+                
+<p>Where: e<sub>k,m</sub> is the error of control attribute k at municipality m,  w<sub>i,j,m</sub> is the updated weight of household i at municipality m, f<sub>i,k,m</sub> is the frequency of the control attribute k on household i at municipality m, c<sub>k,m</sub> is the contraint of the control attribute k at municipality m. </p>
+<p>Municipality level attributes update only the set of weights of the corresponding municipality, while county level attributes update the set of weights of all municipalities that are inside the county.  </p>
+				<p>The goodness of fit of the set of errors is calculated as the average error (deviation measure value). This value is compared to the previous iteration. If the absolute difference of average deviation values between two full iterations satisfies a set of tolerance criteria, the IPU procedure stops updating sample household weights. The default threshold is set equal to 0.01% and can be modified by the user. Additional stopping criteria include the maximum number of iterations (default value equal to 1,500) and average error threshold (default value of 0.0000001).</p>
+                <p>Some modifications has been implemented on the IPU procedure to reduce computational time and memory consumption. Given that the number of zero-value cells of the frequency matrix can be quite large, a collapsed version of the frequency matrix is used for each attribute. This modification minimizes the number of replications to calculate weighted sums and to update the set of weights. Collapsed vectors (or sparse list representations) were previously applied by Pritchard and Miller in 2012; reducing memory requirements to 0.07% for the multizone approach on IPF (iterative proportional fitting).</p>
+                <p>&nbsp;</p>
+                <h2>Generation of the synthetic population</h2>                
+                <p>Households for each municipality are randomly drawn from the sample of microrecords based on the weights of each household at that specific municipality.  Control attributes, that include household characteristics and household individuals' characteristics, are copied from the microdata. </p>
+                <p> The attributes of the population can include also uncontrolled attributes that could not be matched during IPU due to lack of data. One example is household income, which was available at the micro census but not on the aggregated data; or number of autos, that was only available on the aggregated data.</p>
+                <p> Uncontrolled attributes that were available on the microdata are directly copied into the synthetic population. For other uncontrolled attributes, they are assigned to each household using Monte Carlo simulations. Probabilities of each category are modelled based on aggregated values or other micro data. For example, the number of autos is modelled using the Household Travel Survey in Germany (Mobilität in Deutschland), which has less number of records than the Household Census. The model includes household size, number of workers, household income and household location.</p>
+                <p> Once one household and its characteristics is selected for one municipality, the household is allocated at one raster cell within the municipality.</p>
+                </div>
 				<div class="contentright">
 					<h2>Example</h2>
 					<p><img src="images/syntheticPopulation.png" alt="Example of a list with synthetic households" width="150" height="91" align="center"/></p>
 					<p>A synthetic population represents line by line every household individually.</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>                    
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>                                        
+                    <p>&nbsp;</p>
+                  <h2>Example</h2>
+                  <img src="images/syntheticPopulation_frequencyMatrix.png" width="200" height="544" alt=""/>
+<p>The frequency matrix represents line by line every household individually. We have 24 control attributes at the municipality level and 5 control attributes at the county level.</p>
+
+<p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <h2>References of IPU</h2>
+                    <p>Ye, X.; Konduri, K.; Pendyala, R.; Sana, B.; Waddell, P. (2009).  A Methodology to Match Distributions of Both Household and Person Attributes in the Generation of Synthetic Populations. Presented at 88th Annual Meeting of the Transportation Research Board, Washington, D.C.</p>
+                    <p>&nbsp;</p>
+                    <p> Konduri, K.; You, D.; Garikapati, V.; Pendyala, R. (2016).  Application of an Enhanced Population Synthesis Model that Accommodates Controls at Multiple Geographic Resolutions. Presented at 95th Annual Meeting of the Transportation Research Board, Washington, D.C. (Accepted for publication in Transportation Research Record).</p>
+                    <p>&nbsp;</p>
+                    <p> Pritchard, D.R.; Miller, E.J. (2012). Advances in population: fitting many attributes per agent and fitting to household and person margins simultaneously. Transportation 39, 685-704. DOI: 10.1007/s11116-011-9367-4.
+                    
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>                    
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+
+
 				</div>
 				<div style="clear:both;"></div>
 			</div>
